@@ -121,6 +121,8 @@ function myTimer() {
 }
 
 function restart() {  
+    area.innerHTML = "";
+    hide([area, rest]);
     mistakesCount = Math.ceil(digits / 50);
     mistakes.innerHTML = "MISTAKES: " + mistakesCount;
     scored.innerHTML = "SCORE: " + score + "/" + digits;
