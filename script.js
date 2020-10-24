@@ -8,6 +8,7 @@ let digits;
 let seconds;
 let secs;
 let countdown = false;
+let state = 0;
 const settings = id("settings");
 const start = id("start");
 const rest = id("restart");
@@ -23,6 +24,19 @@ let timer;
 hide([header, start, stats, area, rest]);
 
 function id(val) {return document.getElementById(val);}
+
+function enter(e) {
+    if(e.keyCode == 13) {
+        if (state == 1) {
+            startGame();
+            hide([start]);
+            show([area]);
+        }
+        if (state == 2) {
+            restart();
+        }
+    }
+}
 
 settings.addEventListener('submit', sub);
 function sub(event) {
@@ -44,6 +58,7 @@ function show(e) {
 }
 
 function submitF() {
+    state = 1;
     digits = id("digits").value;   
     secs = id("seconds").value;
     seconds = secs;
@@ -56,9 +71,11 @@ function submitF() {
     time.innerHTML = "TIME: " + seconds;
     hide([settings]);
     show([header, start, stats]);
+    id("startBtn").focus();
 }
 
 function startGame() {
+    state = 2;
     countdown = true;
     hide([start]);
     for (i = 0; i < piArr.length; i++) {
@@ -136,17 +153,20 @@ function restart() {
     won = false;
     hide([settings]);
     show([header, start, stats]);
+    id("startBtn").focus();
 }
 
 function end(print) {
+    state = 2;
     alert(print);
     clearInterval(timer);
     document.removeEventListener('keypress', pressed);
     show([rest]);
-    for (i = score; i < piArr.length; i++) {
+    for (i = score; i < piArr.length - 1; i++) {
         let val = pi.charAt(i);
         id("cell" + i).value = val;
         id("cell" + i).style.backgroundColor = "white";
         id("cell" + i).style.color = "red";
     }
+    id("restartBtn").focus();
 }
