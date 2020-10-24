@@ -143,7 +143,7 @@ function end(print) {
     for (i = score; i < piArr.length; i++) {
         let val = pi.charAt(i);
         id("cell" + i).value = val;
-        id("cell" + i).style.backgroundColor = "gray";
+        id("cell" + i).style.backgroundColor = "white";
         id("cell" + i).style.color = "red";
     }
 }
