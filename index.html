@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MEMORISE PI</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+    <body>
+        <header>
+            <section class="stats" id="stats">
+                <span class="stat" id="score"></span>
+                <span class="stat" id="mistakes">MISTAKES: </span>
+                <span class="stat" id="time">TIME: 00</span>
+            </section>
+        </header>
+        <section class="start" id="start">
+            <input type="button" class="startBtn" id="startBtn" value="START" onclick="startGame()">
+        </section>
+        <section class="start" id="restart">
+            <input type="button" class="startBtn" id="restartBtn" value="RESTART" onclick="restart()">
+        </section>
+        <section id="area"></section>
+        <form class="settings" id="settings" onsubmit="return submitF()">
+            <h1>ENTER A NUMBER OF DIGITS:</h1><br>
+            <input type="number" class="setting" id="digits" max="500" min="10"><br>
+            <h1>ENTER A TIME LIMIT (SECONDS):</h1><br>
+            <input type="number" class="setting" id="seconds" max="600" min="10"><br>
+            <input type="submit" class="setting" id="btn" value="OK">
+        </form>
+    </body>
+<script src="script.js"></script>
+</html>
