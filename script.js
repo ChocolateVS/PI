@@ -59,7 +59,6 @@ function submitF() {
 }
 
 function startGame() {
-    timer = setInterval(myTimer, 1000);
     countdown = true;
     hide([start]);
     for (i = 0; i < piArr.length; i++) {
@@ -79,6 +78,10 @@ function startGame() {
 
 function pressed(e) {
     if (e.keyCode >= 48 && e.keyCode <= 57) {
+        if (countdown) {
+            timer = setInterval(myTimer, 1000);
+            countdown = false;
+        }
         var key = parseInt(String.fromCharCode(e.keyCode));
         var check = parseInt(pi.charAt(set + 1));
         console.log(key, check);
